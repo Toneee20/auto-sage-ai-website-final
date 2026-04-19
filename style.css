@@ -1,4 +1,4 @@
-*{margin:0;padding:0;box-sizing:border-box;}
+@import url('fixes.css');*{margin:0;padding:0;box-sizing:border-box;}
 :root{
   --bk:#000008;--s1:#05050F;--s2:#08081A;
   --cy:#4FC3F7;--pu:#7C4DFF;--pu2:#9575CD;
