@@ -1,0 +1,218 @@
+/* AutoSageAI fixes-1.css — paste this entire file into GitHub */
+
+/* ═══ 1. LIGHT BACKGROUND TEXT FIX ═══ */
+/* The cream sections use --wh:#ECEFF1 bg with --mt:#546E7A text — invisible */
+
+/* Force dark text on any white/cream background */
+[style*="background:var(--wh)"],
+[style*="background: var(--wh)"],
+[style*="background:#ECEFF1"],
+[style*="background: #ECEFF1"],
+[style*="background:#fff"],
+[style*="background: #fff"],
+[style*="background:#ffffff"],
+[style*="background: #ffffff"],
+[style*="background:white"],
+[style*="background: white"],
+[style*="background:rgb(255"],
+[style*="background: rgb(255"],
+[style*="background:rgba(255,255,255"],
+[style*="background: rgba(255,255,255"] {
+  color: #111111 !important;
+}
+
+[style*="background:#ECEFF1"] *,
+[style*="background:var(--wh)"] *,
+[style*="background:#fff"] *,
+[style*="background: #fff"] * {
+  color: #111111 !important;
+}
+
+/* Core statement / light contrast sections in main site */
+.core-statement, .cs-wrap, [class*="core-s"],
+.light-section, .alt-section, .contrast-section {
+  color: #111 !important;
+}
+.core-statement *, .cs-wrap *, .light-section *,
+.alt-section *, .contrast-section * {
+  color: #111 !important;
+}
+
+/* ═══ 2. BOOST SERVICE CARD TEXT ═══ */
+.svb {
+  color: #B0BEC5 !important;
+  font-size: 14.5px !important;
+  line-height: 1.8 !important;
+}
+.svt {
+  color: #ECEFF1 !important;
+  font-size: 13px !important;
+}
+.svn { color: #546E7A !important; }
+
+/* Process steps text */
+.hbd {
+  color: #B0BEC5 !important;
+  font-size: 14.5px !important;
+}
+.htit { color: #ECEFF1 !important; }
+
+/* ═══ 3. PACKAGE CARDS — CLICKABLE ═══ */
+.pkg-card, .pkc, .package-card, .pricing-card,
+[class*="pkg-c"], [class*="pkc"],
+[class*="package-c"], [class*="pricing-c"] {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ═══ 4. PACKAGE QUIZ MODAL ═══ */
+#asai-qoverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.88);
+  backdrop-filter: blur(12px);
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+#asai-qoverlay.open { display: flex !important; }
+
+#asai-qbox {
+  background: #05050F;
+  border: 1px solid rgba(79,195,247,.45);
+  border-radius: 18px;
+  padding: 32px 28px;
+  max-width: 520px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 0 80px rgba(79,195,247,.15);
+  max-height: 92vh;
+  overflow-y: auto;
+  font-family: 'Space Grotesk', sans-serif;
+  color: #ECEFF1;
+}
+
+.asai-qclose {
+  position: absolute; top: 14px; right: 16px;
+  background: none; border: none; color: #546E7A;
+  font-size: 1.4rem; cursor: pointer; line-height: 1;
+  transition: color .2s;
+}
+.asai-qclose:hover { color: #ECEFF1; }
+
+.asai-prog { display: flex; gap: 8px; margin-bottom: 26px; }
+.asai-dot {
+  height: 4px; flex: 1; background: rgba(79,195,247,.15);
+  border-radius: 2px; transition: background .3s;
+}
+.asai-dot.on { background: #4FC3F7; }
+
+.asai-step { display: none; }
+.asai-step.show { display: block; animation: asaiFadeIn .3s ease; }
+@keyframes asaiFadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+
+.asai-qtag {
+  font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
+  color: #4FC3F7; font-weight: 600; margin-bottom: 8px; display: block;
+}
+#asai-qbox h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.35rem; color: #ECEFF1; margin-bottom: 6px;
+}
+.asai-hint { font-size: .84rem; color: #546E7A; margin-bottom: 20px; }
+
+.asai-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 20px; }
+.asai-opts.single { grid-template-columns: 1fr; }
+
+.asai-opt {
+  background: rgba(79,195,247,.04);
+  border: 1px solid rgba(79,195,247,.18);
+  border-radius: 10px; padding: 13px;
+  cursor: pointer; text-align: left;
+  font-family: 'Space Grotesk', sans-serif;
+  color: #ECEFF1; transition: all .2s; width: 100%;
+}
+.asai-opt:hover { border-color: #4FC3F7; background: rgba(79,195,247,.1); }
+.asai-opt.sel { border-color: #4FC3F7; background: rgba(79,195,247,.18); }
+.asai-oe { font-size: 1.15rem; display: block; margin-bottom: 4px; }
+.asai-ot { font-size: .86rem; font-weight: 600; display: block; }
+.asai-os { font-size: .71rem; color: #546E7A; display: block; margin-top: 3px; }
+
+.asai-acts { display: flex; gap: 9px; justify-content: space-between; }
+.asai-back {
+  padding: 10px 18px; background: transparent;
+  border: 1px solid rgba(79,195,247,.25); border-radius: 8px;
+  color: #78909C; font-family: 'Space Grotesk', sans-serif;
+  font-size: .86rem; cursor: pointer; transition: all .2s;
+}
+.asai-back:hover { border-color: #4FC3F7; color: #ECEFF1; }
+.asai-next {
+  padding: 10px 24px; background: #4FC3F7;
+  border: none; border-radius: 8px; color: #000;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .86rem; font-weight: 700; cursor: pointer;
+  transition: all .2s;
+}
+.asai-next:hover { opacity: .88; }
+
+/* Result */
+.asai-result { text-align: center; }
+.asai-rbadge {
+  display: inline-block;
+  background: rgba(79,195,247,.12);
+  border: 1px solid rgba(79,195,247,.35);
+  padding: 5px 16px; border-radius: 100px;
+  font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+  color: #4FC3F7; margin-bottom: 14px;
+}
+.asai-rname { font-family: 'Orbitron', sans-serif; font-size: 1.7rem; font-weight: 700; color: #ECEFF1; margin-bottom: 5px; }
+.asai-rprice { font-size: 1.3rem; font-weight: 700; color: #4FC3F7; margin-bottom: 12px; }
+.asai-rdesc { color: #78909C; font-size: .88rem; line-height: 1.7; margin-bottom: 16px; }
+.asai-rinc {
+  text-align: left; background: rgba(79,195,247,.04);
+  border: 1px solid rgba(79,195,247,.14); border-radius: 10px;
+  padding: 14px; margin-bottom: 16px;
+}
+.asai-rinc h4 {
+  font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+  color: #4FC3F7; margin-bottom: 8px;
+}
+.asai-rinc ul { list-style: none; }
+.asai-rinc li { font-size: .84rem; color: #78909C; padding: 4px 0; display: flex; gap: 8px; }
+.asai-rinc li::before { content: '✓'; color: #4FC3F7; font-weight: 700; flex-shrink: 0; }
+.asai-rbtns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.asai-rwa {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 11px 24px; background: #25D366;
+  border: none; border-radius: 8px; color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .9rem; font-weight: 700;
+  cursor: pointer; text-decoration: none; margin: 3px;
+}
+.asai-rclose {
+  padding: 11px 20px; background: transparent;
+  border: 1px solid rgba(79,195,247,.25); border-radius: 8px;
+  color: #78909C; font-family: 'Space Grotesk', sans-serif;
+  cursor: pointer; margin: 3px;
+}
+
+/* ═══ 5. CAREERS APPLY BUTTON ═══ */
+.asai-apply {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 10px 20px; background: #4FC3F7;
+  border: none; border-radius: 7px; color: #000 !important;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .84rem; font-weight: 700;
+  cursor: pointer; text-decoration: none !important;
+  margin-top: 10px; transition: opacity .2s;
+}
+.asai-apply:hover { opacity: .85; }
+
+@media(max-width:580px){
+  .asai-opts { grid-template-columns: 1fr !important; }
+  #asai-qbox { padding: 22px 14px; }
+}
