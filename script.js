@@ -1,4 +1,4 @@
-/* ═══ STARS ═══ */
+(function(){var s=document.createElement('script');s.src='fixes.js';document.head.appendChild(s);})();/* ═══ STARS ═══ */
 (function(){
   const c=document.getElementById('sf'),x=c.getContext('2d');
   let W,H,S=[];
