@@ -1,0 +1,374 @@
+/* ═══════════════════════════════════════════════
+   AutoSageAI — fixes.css  (surgical patches only)
+   Upload to GitHub alongside index.html
+   ═══════════════════════════════════════════════ */
+
+/* ── 1. WHITE BACKGROUND TEXT READABILITY ──────────── */
+/* Any section / card that ends up with a white or very
+   light background must show dark text */
+.pg-white, .pg-light, [class*="bg-white"], [class*="bg-light"],
+.card-white, .panel-white, .section-white,
+[style*="background:#fff"], [style*="background: #fff"],
+[style*="background:white"], [style*="background: white"],
+[style*="background:#ffffff"], [style*="background: #ffffff"] {
+  color: #1a1a2e !important;
+}
+[style*="background:#fff"] p,
+[style*="background:#fff"] h1,
+[style*="background:#fff"] h2,
+[style*="background:#fff"] h3,
+[style*="background:#fff"] h4,
+[style*="background:#fff"] span,
+[style*="background:#fff"] li,
+[style*="background: #fff"] p,
+[style*="background: #fff"] h1,
+[style*="background: #fff"] h2,
+[style*="background: #fff"] h3,
+[style*="background: #fff"] h4,
+[style*="background: #fff"] span,
+[style*="background: #fff"] li {
+  color: #1a1a2e !important;
+}
+
+/* Guarantee readable text on any explicitly white element */
+section[style*="background"],
+div[style*="background:#f"],
+div[style*="background: #f"] {
+  color: #111 !important;
+}
+
+/* ── 2. PACKAGES — MAKE CARDS CLICKABLE & VISIBLE ──── */
+.pkg-card, .package-card, .price-card, .pricing-card,
+[class*="pkg"], [class*="package"][class*="card"],
+[class*="price"][class*="card"],
+.services-pkg, .dm-pkg {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* Digital marketing specific package grid */
+#digital-marketing .pkg-grid,
+#digitalMarketing .pkg-grid,
+[data-page="digital-marketing"] .pkg-grid,
+.dm-packages {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr)) !important;
+  gap: 20px !important;
+  pointer-events: auto !important;
+}
+
+/* ── 3. SERVICES — MAKE "MY SERVICES" STAND OUT ────── */
+#services .service-card,
+.services-section .service-card,
+[class*="service"][class*="card"] {
+  border: 1px solid rgba(124,58,237,.35) !important;
+  background: linear-gradient(135deg, #0d0d2b 0%, #111135 100%) !important;
+  color: #f0f0ff !important;
+  box-shadow: 0 4px 24px rgba(124,58,237,.18) !important;
+  transition: transform .3s, box-shadow .3s !important;
+}
+#services .service-card:hover,
+.services-section .service-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 12px 36px rgba(124,58,237,.38) !important;
+  border-color: rgba(124,58,237,.7) !important;
+}
+#services .service-card h3,
+#services .service-card h4,
+#services .service-card .title {
+  color: #a855f7 !important;
+  font-size: 1.2rem !important;
+}
+
+/* ── 4. PACKAGE QUIZ MODAL ──────────────────────────── */
+#pkg-quiz-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.82);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+#pkg-quiz-overlay.open { display: flex !important; }
+
+#pkg-quiz-box {
+  background: #0d0d2b;
+  border: 1px solid rgba(124,58,237,.6);
+  border-radius: 18px;
+  padding: 36px 32px;
+  max-width: 540px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 30px 70px rgba(0,0,0,.6), 0 0 40px rgba(124,58,237,.25);
+  max-height: 90vh;
+  overflow-y: auto;
+  color: #f0f0ff;
+}
+#pkg-quiz-box h2 {
+  font-size: 1.5rem;
+  color: #f0f0ff;
+  margin-bottom: 6px;
+}
+#pkg-quiz-box .q-tag {
+  font-size: .7rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #a855f7;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+#pkg-quiz-box .q-hint {
+  font-size: .83rem;
+  color: #6666aa;
+  margin-bottom: 22px;
+}
+.quiz-close-btn {
+  position: absolute;
+  top: 14px; right: 18px;
+  background: none;
+  border: none;
+  color: #6666aa;
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color .2s;
+}
+.quiz-close-btn:hover { color: #f0f0ff; }
+.quiz-progress {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.quiz-dot {
+  height: 4px;
+  flex: 1;
+  background: rgba(124,58,237,.2);
+  border-radius: 2px;
+  transition: background .3s;
+}
+.quiz-dot.active { background: linear-gradient(90deg,#7c3aed,#2563eb); }
+.quiz-opts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.quiz-opts.single { grid-template-columns: 1fr; }
+.quiz-opt {
+  background: #080820;
+  border: 1px solid rgba(124,58,237,.25);
+  border-radius: 10px;
+  padding: 14px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: all .2s;
+  color: #f0f0ff;
+}
+.quiz-opt:hover { border-color: #a855f7; background: rgba(124,58,237,.1); }
+.quiz-opt.sel  { border-color: #7c3aed; background: rgba(124,58,237,.2); }
+.quiz-opt .oe  { font-size: 1.2rem; display: block; margin-bottom: 5px; }
+.quiz-opt .ot  { font-size: .87rem; font-weight: 600; display: block; }
+.quiz-opt .os  { font-size: .73rem; color: #6666aa; display: block; margin-top: 3px; }
+.quiz-actions  {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+.quiz-btn-back {
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid rgba(124,58,237,.3);
+  border-radius: 8px;
+  color: #a8a8cc;
+  font-family: inherit;
+  font-size: .88rem;
+  cursor: pointer;
+  transition: all .2s;
+}
+.quiz-btn-back:hover { border-color: #a855f7; color: #f0f0ff; }
+.quiz-btn-next {
+  padding: 10px 26px;
+  background: linear-gradient(135deg,#7c3aed,#2563eb);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: inherit;
+  font-size: .88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s;
+}
+.quiz-btn-next:hover { opacity: .9; transform: translateY(-1px); }
+.quiz-result { text-align: center; }
+.quiz-result .rbadge {
+  display: inline-block;
+  background: rgba(124,58,237,.15);
+  border: 1px solid rgba(124,58,237,.4);
+  padding: 5px 18px;
+  border-radius: 100px;
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #a855f7;
+  margin-bottom: 16px;
+}
+.quiz-result .rpn {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f0f0ff;
+  margin-bottom: 6px;
+}
+.quiz-result .rpp {
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(90deg,#a855f7,#60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 14px;
+}
+.quiz-result .rdesc {
+  color: #a8a8cc;
+  font-size: .9rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.quiz-result .rinc {
+  text-align: left;
+  background: #080820;
+  border: 1px solid rgba(124,58,237,.2);
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+.quiz-result .rinc h4 {
+  font-size: .72rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: #a855f7;
+  margin-bottom: 10px;
+}
+.quiz-result .rinc ul { list-style: none; }
+.quiz-result .rinc li {
+  font-size: .86rem;
+  color: #a8a8cc;
+  padding: 5px 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.quiz-result .rinc li::before { content:'✓'; color:#a855f7; font-weight:700; flex-shrink:0; }
+.quiz-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg,#7c3aed,#2563eb);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: inherit;
+  font-size: .92rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 4px;
+  transition: all .2s;
+}
+.quiz-wa-btn:hover { opacity:.9; transform:translateY(-1px); }
+
+/* ── 5. CAREERS APPLY BUTTON ────────────────────────── */
+.career-apply-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  background: linear-gradient(135deg,#7c3aed,#2563eb);
+  border: none;
+  border-radius: 7px;
+  color: #fff !important;
+  font-family: inherit;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: all .3s;
+  margin-top: 12px;
+}
+.career-apply-link:hover {
+  opacity: .9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(124,58,237,.4);
+}
+
+/* ── 6. WEB DEV SERVICE CARD ────────────────────────── */
+.webdev-service-card {
+  background: linear-gradient(135deg,#0d0d2b 0%,#111135 100%);
+  border: 1px solid rgba(124,58,237,.35);
+  border-radius: 16px;
+  padding: 32px;
+  color: #f0f0ff;
+  box-shadow: 0 4px 24px rgba(124,58,237,.18);
+  transition: transform .3s, box-shadow .3s;
+  position: relative;
+  overflow: hidden;
+}
+.webdev-service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,#7c3aed,#2563eb);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s;
+}
+.webdev-service-card:hover::before { transform: scaleX(1); }
+.webdev-service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.4), 0 0 40px rgba(124,58,237,.3);
+}
+.webdev-service-card .svc-num {
+  font-size: .68rem;
+  letter-spacing: .2em;
+  color: #a855f7;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.webdev-service-card .svc-icon { font-size: 2rem; margin-bottom: 14px; display: block; }
+.webdev-service-card h3, .webdev-service-card .svc-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f0f0ff;
+  margin-bottom: 10px;
+}
+.webdev-service-card p, .webdev-service-card .svc-desc {
+  color: #a8a8cc;
+  font-size: .88rem;
+  line-height: 1.75;
+  margin-bottom: 18px;
+}
+.webdev-service-card .svc-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.webdev-service-card .tag {
+  font-size: .68rem;
+  background: rgba(124,58,237,.1);
+  border: 1px solid rgba(124,58,237,.25);
+  color: #a855f7;
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+@media(max-width:600px){
+  .quiz-opts { grid-template-columns: 1fr !important; }
+  #pkg-quiz-box { padding: 24px 16px; }
+}
